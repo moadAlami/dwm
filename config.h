@@ -2,11 +2,6 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-
-/* alpha patch */
-static unsigned int baralpha        = 0xd0;
-static unsigned int borderalpha     = OPAQUE;
-
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
