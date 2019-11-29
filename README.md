@@ -69,6 +69,7 @@ This build uses the following patches:
   * [scratchpad](https://dwm.suckless.org/patches/scratchpad/) - Allows for spawning or restoring a terminal window.
   * [sizehints](https://dwm.suckless.org/patches/sizehints/) - Makes dwm obey even "soft" sizehints for new clients. Any window that requests a specific initial size will be floated and set to that size. Unlike with "fixed size" windows, you are able to resize and/or unfloat these windows freely - only the initial state is affected.
   * [stackmfact](https://dwm.suckless.org/patches/stackmfact/) - Allows for vertically resizing clients in the stack.
+  * [status2d](https://dwm.suckless.org/patches/status2d/) - Allows colors and rectangle drawing in DWM status bar.
   * [sticky](https://dwm.suckless.org/patches/sticky/) - Adds the ability to make a client sticky. Which makes it visible on all tags.
   * [swallow](https://dwm.suckless.org/patches/swallow/) - Adds "window swallowing" to dwm.
   * [zoomswap](https://dwm.suckless.org/patches/zoomswap/) - Swaps the current window with the previous master when zooming.
