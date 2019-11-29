@@ -1,0 +1,74 @@
+# dwm - dynamic window manager
+
+dwm is an extremely fast, small, and dynamic window manager for X.
+
+
+## Requirements
+
+In order to build dwm you need the Xlib header files.
+
+
+## Installation
+
+Edit config.mk to match your local setup (dwm is installed into
+the /usr/local namespace by default).
+
+Afterwards enter the following command to build and install dwm (if
+necessary as root):
+
+    make clean install
+
+
+## Running dwm
+
+Add the following line to your .xinitrc to start dwm using startx:
+
+    exec dwm
+
+In order to connect dwm to a specific display, make sure that
+the DISPLAY environment variable is set correctly, e.g.:
+
+    DISPLAY=foo.bar:1 exec dwm
+
+(This will start dwm on display :1 of the host foo.bar.)
+
+In order to display status info in the bar, you can do something
+like this in your .xinitrc:
+
+    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
+    do
+    	sleep 1
+    done &
+    exec dwm
+
+
+## Configuration
+
+The configuration of dwm is done by creating a custom config.h
+and (re)compiling the source code.
+
+## Patches
+
+This build uses the following patches:
+
+  * [bottomstack](https://dwm.suckless.org/patches/bottomstack/) - Adds the bottom stack (horizontal / Vertical) layouts to dwm.
+  * [centeredmaster](https://dwm.suckless.org/patches/centeredmaster/) - Adds the centeredmaster and centeredfloatingmaster layouts to dwm.
+  * [dragmfact](https://dwm.suckless.org/patches/dragmfact/) - Adds the ability to resize the split in the tile layout by holding the modkey and dragging the mouse.
+  * [fakefullscreen](https://dwm.suckless.org/patches/fakefullscreen/) - Only allows clients to "fullscreen" into the space given to them.
+  * [fullscreen](https://dwm.suckless.org/patches/fullscreen/) - Applies the monocle layout with the focused client on top and hides the bar.
+  * [gridmode](https://dwm.suckless.org/patches/gridmode/) - Adds the grid layout to dwm.
+  * [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/) - Prevents dwm from drawing tags with no clients on the bar.
+  * [moveresize](https://dwm.suckless.org/patches/moveresize/) - Adds the ability to move and resize floating clients.
+  * [movestack](https://dwm.suckless.org/patches/movestack/) - Allows for moving clients around the stack and swapping them with the master.
+  * [noborder](https://dwm.suckless.org/patches/noborder/) - Remove the border when there is only one window visible.
+  * [notitle](https://dwm.suckless.org/patches/notitle/) - Removes the client title from the bar.
+  * [pertag](https://dwm.suckless.org/patches/pertag/) - Keeps layout, mwfact, barpos and nmaster per tag.
+  * [ru gaps](https://dwm.suckless.org/patches/ru_gaps/) - Adds useless gaps to dwm.
+  * [savefloats](https://dwm.suckless.org/patches/save_floats/) - Saves size and position of every floating window before it is forced into tiled mode. If the window is made floating again, the old dimensions will be restored.
+  * [scratchpad](https://dwm.suckless.org/patches/scratchpad/) - Allows for spawning or restoring a terminal window.
+  * [sizehints](https://dwm.suckless.org/patches/sizehints/) - Makes dwm obey even "soft" sizehints for new clients. Any window that requests a specific initial size will be floated and set to that size. Unlike with "fixed size" windows, you are able to resize and/or unfloat these windows freely - only the initial state is affected.
+  * [stackmfact](https://dwm.suckless.org/patches/stackmfact/) - Allows for vertically resizing clients in the stack.
+  * [sticky](https://dwm.suckless.org/patches/sticky/) - Adds the ability to make a client sticky. Which makes it visible on all tags.
+  * [swallow](https://dwm.suckless.org/patches/swallow/) - Adds "window swallowing" to dwm.
+  * [xrdb](https://dwm.suckless.org/patches/xrdb/) - Allows dwm to read colors from xrdb (.Xresources) at run time.
+  * [zoomswap](https://dwm.suckless.org/patches/zoomswap/) - Swaps the current window with the previous master when zooming.
