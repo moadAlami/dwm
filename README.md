@@ -51,6 +51,7 @@ and (re)compiling the source code.
 
 This build uses the following patches:
 
+  * [alpha](https://dwm.suckless.org/patches/alpha/) - Allow dwm to have translucent bars, while keeping all the text on it opaque.
   * [bottomstack](https://dwm.suckless.org/patches/bottomstack/) - Adds the bottom stack (horizontal / Vertical) layouts to dwm.
   * [centeredmaster](https://dwm.suckless.org/patches/centeredmaster/) - Adds the centeredmaster and centeredfloatingmaster layouts to dwm.
   * [dragmfact](https://dwm.suckless.org/patches/dragmfact/) - Adds the ability to resize the split in the tile layout by holding the modkey and dragging the mouse.
@@ -70,5 +71,4 @@ This build uses the following patches:
   * [stackmfact](https://dwm.suckless.org/patches/stackmfact/) - Allows for vertically resizing clients in the stack.
   * [sticky](https://dwm.suckless.org/patches/sticky/) - Adds the ability to make a client sticky. Which makes it visible on all tags.
   * [swallow](https://dwm.suckless.org/patches/swallow/) - Adds "window swallowing" to dwm.
-  * [xrdb](https://dwm.suckless.org/patches/xrdb/) - Allows dwm to read colors from xrdb (.Xresources) at run time.
   * [zoomswap](https://dwm.suckless.org/patches/zoomswap/) - Swaps the current window with the previous master when zooming.
