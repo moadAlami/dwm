@@ -8,18 +8,28 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#2f343f";
-/* static char normfgcolor[]           = "#bbbbbb"; */
-static char normfgcolor[]           = "#ffffff";
-/* static char selfgcolor[]            = "#eeeeee"; */
-static char selfgcolor[]            = "#ffffff";
-static char selbordercolor[]        = "#7FB095";
-static char selbgcolor[]            = "#005577";
-static char *colors[][3]      = {
+static const char normbgcolor[]           = "#222222";
+static const char normbordercolor[]       = "#2f343f";
+static const char normfgcolor[]           = "#ffffff";
+static const char selfgcolor[]            = "#ffffff";
+static const char selbordercolor[]        = "#7FB095";
+static const char selbgcolor[]            = "#005577";
+
+/* alpha patch */
+static const unsigned int baralpha = 0xd0;
+static const unsigned int borderalpha = OPAQUE;
+
+static const char *colors[][3]      = {
 	/*               fg         	bg         border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
     [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+};
+
+/* alpha patch */
+static const unsigned int alphas[][3]      = {
+	/*               fg      bg        border     */
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
@@ -131,7 +141,6 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = dec_vol } },
 	{ 0,					XF86XK_AudioMute,			spawn,			{.v = toggle_vol } },
 
-	{ MODKEY,               XK_F5,     					xrdb,           {.v = NULL } },
 	{ MODKEY,               XK_s,      					togglesticky,   {0} },
 	{ MODKEY,               XK_a,  	   					togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               XK_h,      					setmfact,       {.f = -0.05} },
