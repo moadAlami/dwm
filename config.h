@@ -109,6 +109,11 @@ static const char *toggle_vol[] = { "/home/moadalami/Scripts/volume/toggle_vol",
 static const char *inc_bright[] = { "/home/moadalami/Scripts/brightness/inc_bright", NULL };
 static const char *dec_bright[] = { "/home/moadalami/Scripts/brightness/dec_bright", NULL };
 
+/* music player controls */
+static const char *next[] = { "/home/moadalami/Scripts/music/next", NULL };
+static const char *previous[] = { "/home/moadalami/Scripts/music/previous", NULL };
+static const char *pause_play[] = { "/home/moadalami/Scripts/music/pause-play", NULL };
+
 /* movestack patch */
 #include "movestack.c"
 
@@ -141,6 +146,10 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioRaiseVolume,	spawn,			{.v = inc_vol } },
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = dec_vol } },
 	{ 0,					XF86XK_AudioMute,			spawn,			{.v = toggle_vol } },
+
+	{ MODKEY,				XK_F1,						spawn,			{.v = next } },
+	{ MODKEY,				XK_F2,						spawn,			{.v = pause_play } },
+	{ MODKEY,				XK_F3,						spawn,			{.v = previous } },
 
 	{ MODKEY,               XK_s,      					togglesticky,   {0} },
 	{ MODKEY,               XK_a,  	   					togglescratch,  {.v = scratchpadcmd } },
