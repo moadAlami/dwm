@@ -36,6 +36,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xproto.h>
 #include <X11/Xutil.h>
+
 #ifdef XINERAMA
 #include <X11/extensions/Xinerama.h>
 #endif /* XINERAMA */
@@ -146,8 +147,13 @@ struct Monitor {
 	int by;               /* bar geometry */
 	int mx, my, mw, mh;   /* screen size */
 	int wx, wy, ww, wh;   /* window area  */
+
 	/* fullgaps patch */
 	int gappx;            /* gaps between windows */
+
+	/* setborderpx patch */
+	unsigned int borderpx;
+
 	unsigned int seltags;
 	unsigned int sellt;
 	unsigned int tagset[2];
@@ -244,6 +250,10 @@ static void run(void);
 static void scan(void);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
+
+/* setborderpx patch */
+static void setborderpx(const Arg *arg);
+
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
@@ -836,6 +846,7 @@ createmon(void)
 	m->nmaster = nmaster;
 	m->showbar = showbar;
 	m->topbar = topbar;
+	m->borderpx = borderpx; /* setborderpx patch */
 	m->gappx = gappx; /* fullgaps patch */
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
@@ -1393,7 +1404,10 @@ manage(Window w, XWindowAttributes *wa)
 	/* only fix client y-offset, if the client center might cover the bar */
 	c->y = MAX(c->y, ((c->mon->by == c->mon->my) && (c->x + (c->w / 2) >= c->mon->wx)
 		&& (c->x + (c->w / 2) < c->mon->wx + c->mon->ww)) ? bh : c->mon->my);
-	c->bw = borderpx;
+
+	/* setborderpx patch */
+	/* c->bw = borderpx; */
+	c->bw = c->mon->borderpx;
 
 	/* scratchpad patch */
 	selmon->tagset[selmon->seltags] &= ~scratchtag;
@@ -1824,6 +1838,28 @@ sendmon(Client *c, Monitor *m)
 	attachstack(c);
 	focus(NULL);
 	arrange(NULL);
+}
+
+/* setborderpx patch */
+void
+setborderpx(const Arg *arg)
+{
+	Client *c;
+
+	if (arg->i == 0)
+		selmon->borderpx = borderpx;	
+	else if (selmon->borderpx + arg->i < 0)
+		selmon->borderpx = 0;	
+	else
+		selmon->borderpx += arg->i;	
+	
+	for (c = selmon->clients; c; c = c->next)
+		if (c->bw + arg->i < 0)
+			c->bw = selmon->borderpx = 0;	
+		else
+			c->bw = selmon->borderpx;	
+
+	arrange(selmon);
 }
 
 void

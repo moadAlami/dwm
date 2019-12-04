@@ -67,6 +67,7 @@ This build uses the following patches:
   * [ru gaps](https://dwm.suckless.org/patches/ru_gaps/) - Adds useless gaps to dwm.
   * [savefloats](https://dwm.suckless.org/patches/save_floats/) - Saves size and position of every floating window before it is forced into tiled mode. If the window is made floating again, the old dimensions will be restored.
   * [scratchpad](https://dwm.suckless.org/patches/scratchpad/) - Allows for spawning or restoring a terminal window.
+  * [setborderpx](https://dwm.suckless.org/patches/setborderpx/) - Allows for changing border pixels at runtime
   * [sizehints](https://dwm.suckless.org/patches/sizehints/) - Makes dwm obey even "soft" sizehints for new clients. Any window that requests a specific initial size will be floated and set to that size. Unlike with "fixed size" windows, you are able to resize and/or unfloat these windows freely - only the initial state is affected.
   * [stackmfact](https://dwm.suckless.org/patches/stackmfact/) - Allows for vertically resizing clients in the stack.
   * [status2d](https://dwm.suckless.org/patches/status2d/) - Allows colors and rectangle drawing in DWM status bar.

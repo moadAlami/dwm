@@ -157,8 +157,15 @@ static Key keys[] = {
  	{ MODKEY,               XK_l,      					setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,     XK_j,      					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_k,      					movestack,      {.i = -1 } },
+
 	{ MODKEY,               XK_equal,				   	setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_equal,					setgaps,        {.i = -1 } },
+
+	{ Mod1Mask|ShiftMask,   XK_equal,					setborderpx,    {.i = -1 } },
+	{ Mod1Mask,             XK_equal,					setborderpx,    {.i = +1 } },
+	{ Mod1Mask,   			XK_agrave, 					setborderpx,    {.i = 0 } },
+
+
 	{ MODKEY,               XK_d,						spawn,          {.v = dmenucmd } },
 	{ MODKEY,			    XK_Return,					spawn,          {.v = termcmd } },
 	{ MODKEY,               XK_b,						togglebar,      {0} },
