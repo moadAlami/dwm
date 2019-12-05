@@ -96,8 +96,8 @@ static const char *termcmd[]  = { "kitty", NULL };
 
 /* scratchpad patch */
 static const char scratchpadname[] = "scratchpad";
-/* static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL }; */
-static const char *scratchpadcmd[] = { "kitty", "--title",scratchpadname, NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+/* static const char *scratchpadcmd[] = { "kitty", "--title",scratchpadname, NULL }; */
 
 #include <X11/XF86keysym.h>
 /* volume control */
@@ -114,11 +114,16 @@ static const char *next[] = { "/home/moadalami/Scripts/music/next", NULL };
 static const char *previous[] = { "/home/moadalami/Scripts/music/previous", NULL };
 static const char *pause_play[] = { "/home/moadalami/Scripts/music/pause-play", NULL };
 
+/* num lock */
+static const char *num_lock[] = {"/home/moadalami/github/dwm-bar/refresh-dwmbar", NULL };
+
 /* movestack patch */
 #include "movestack.c"
 
 static Key keys[] = {
 	/* modifier             key        					function        argument */
+
+	{ 0,					XK_Num_Lock,				spawn,			{.v = num_lock } },
 
 	{ MODKEY,               XK_t,						setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_space,					setlayout,      {.v = &layouts[1]} },
