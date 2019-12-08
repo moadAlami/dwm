@@ -8,7 +8,6 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-/* static const char normbgcolor[]           = "#222222"; */
 static const char normbgcolor[]           = "#2F343F";
 static const char normbordercolor[]       = "#2f343f";
 static const char normfgcolor[]           = "#ffffff";
@@ -97,7 +96,6 @@ static const char *termcmd[]  = { "kitty", NULL };
 /* scratchpad patch */
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-/* static const char *scratchpadcmd[] = { "kitty", "--title",scratchpadname, NULL }; */
 
 #include <X11/XF86keysym.h>
 /* volume control */
@@ -114,16 +112,16 @@ static const char *next[] = { "/home/moadalami/Scripts/music/next", NULL };
 static const char *previous[] = { "/home/moadalami/Scripts/music/previous", NULL };
 static const char *pause_play[] = { "/home/moadalami/Scripts/music/pause-play", NULL };
 
-/* num lock */
-static const char *num_lock[] = {"/home/moadalami/github/dwm-bar/refresh-dwmbar", NULL };
-
 /* movestack patch */
 #include "movestack.c"
 
 static Key keys[] = {
 	/* modifier             key        					function        argument */
 
-	{ 0,					XK_Num_Lock,				spawn,			{.v = num_lock } },
+	/* { 0,					XK_Num_Lock,				spawn,			{.v = num_lock } }, */
+	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat $HOME/github/dwm-bar/dwmpid)") },
+	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("shutdown now") },
+	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
 
 	{ MODKEY,               XK_t,						setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_space,					setlayout,      {.v = &layouts[1]} },
