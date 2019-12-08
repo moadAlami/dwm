@@ -118,8 +118,7 @@ static const char *pause_play[] = { "/home/moadalami/Scripts/music/pause-play", 
 static Key keys[] = {
 	/* modifier             key        					function        argument */
 
-	/* { 0,					XK_Num_Lock,				spawn,			{.v = num_lock } }, */
-	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat $HOME/github/dwm-bar/dwmpid)") },
+	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/moadalami/github/dwm-bar/dwmpid)") },
 	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("shutdown now") },
 	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
 
