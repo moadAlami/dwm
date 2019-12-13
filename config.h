@@ -153,6 +153,9 @@ static Key keys[] = {
 	{ MODKEY,				XK_F2,						spawn,			{.v = pause_play } },
 	{ MODKEY,				XK_F3,						spawn,			{.v = previous } },
 
+	/* screenchot */
+	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/moadalami/Pictures/Screenshots/'") },
+
 	{ MODKEY,               XK_s,      					togglesticky,   {0} },
 	{ MODKEY,               XK_a,  	   					togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               XK_h,      					setmfact,       {.f = -0.05} },
