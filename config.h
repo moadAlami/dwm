@@ -95,7 +95,7 @@ static const char *termcmd[]  = { "kitty", NULL };
 
 /* scratchpad patch */
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x20", NULL };
 
 #include <X11/XF86keysym.h>
 /* volume control */
