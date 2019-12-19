@@ -2570,9 +2570,9 @@ updatesizehints(Client *c)
 	if (!XGetWMNormalHints(dpy, c->win, &size, &msize))
 		/* size is uninitialized, ensure that size.flags aren't used */
 
-		/* sizehints patch */
-		/* size.flags = PSize; */
-		size.flags = 0;
+		/* sizehints patch disabled */
+		size.flags = PSize;
+		/* size.flags = 0; */
 
 	if (size.flags & PBaseSize) {
 		c->basew = size.base_width;
@@ -2606,12 +2606,12 @@ updatesizehints(Client *c)
 	} else
 		c->maxa = c->mina = 0.0;
 
-	/* sizehints patch */
-	if(size.flags & PSize) {
-		c->basew = size.base_width;
-		c->baseh = size.base_height;
-		c->isfloating = True;
-	}
+	/* /1* sizehints patch *1/ */
+	/* if(size.flags & PSize) { */
+	/* 	c->basew = size.base_width; */
+	/* 	c->baseh = size.base_height; */
+	/* 	c->isfloating = True; */
+	/* } */
 
 	c->isfixed = (c->maxw && c->maxh && c->maxw == c->minw && c->maxh == c->minh);
 }
