@@ -136,10 +136,10 @@ static Key keys[] = {
 	{ Mod1Mask,					XK_k,		moveresize,		{.v = (int []){ 0, -25, 0, 0 }}},
 	{ Mod1Mask,					XK_l,	moveresize,		{.v = (int []){ 25, 0, 0, 0 }}},
 	{ Mod1Mask,					XK_h,	moveresize,		{.v = (int []){ -25, 0, 0, 0 }}},
-	{ Mod1Mask|ShiftMask,			XK_j,	moveresize,		{.v = (int []){ 0, 0, 0, 25 }}},
-	{ Mod1Mask|ShiftMask,			XK_k,	moveresize,		{.v = (int []){ 0, 0, 0, -25 }}},
-	{ Mod1Mask|ShiftMask,			XK_l,	moveresize,		{.v = (int []){ 0, 0, 25, 0 }}},
-	{ Mod1Mask|ShiftMask,			XK_h,	moveresize,		{.v = (int []){ 0, 0, -25, 0 }}},
+	{ Mod1Mask|ShiftMask,		XK_j,	moveresize,		{.v = (int []){ 0, 0, 0, 25 }}},
+	{ Mod1Mask|ShiftMask,		XK_k,	moveresize,		{.v = (int []){ 0, 0, 0, -25 }}},
+	{ Mod1Mask|ShiftMask,		XK_l,	moveresize,		{.v = (int []){ 0, 0, 25, 0 }}},
+	{ Mod1Mask|ShiftMask,		XK_h,	moveresize,		{.v = (int []){ 0, 0, -25, 0 }}},
 
 
 	{ 0,					XF86XK_MonBrightnessUp, 	spawn,			{.v = inc_bright } },
@@ -149,9 +149,9 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = dec_vol } },
 	{ 0,					XF86XK_AudioMute,			spawn,			{.v = toggle_vol } },
 
-	{ MODKEY,				XK_F1,						spawn,			{.v = next } },
+	{ MODKEY,				XK_F1,						spawn,			{.v = previous } },
 	{ MODKEY,				XK_F2,						spawn,			{.v = pause_play } },
-	{ MODKEY,				XK_F3,						spawn,			{.v = previous } },
+	{ MODKEY,				XK_F3,						spawn,			{.v = next } },
 
 	/* screenchot */
 	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/moadalami/Pictures/Screenshots/'") },
