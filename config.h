@@ -49,7 +49,7 @@ static const Rule rules[] = {
 	{ "kitty",   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
 	{ "st",		   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
 	{ "xclock",		   	NULL,		NULL,	0,			0,				1,		  0,		 0,			-1 },
-
+	{ "QGIS3",		   	NULL,		NULL,	1 << 7,		0,				0,		  0,		 0,			-1 },
 };
 
 /* layout(s) */
@@ -121,6 +121,7 @@ static Key keys[] = {
 	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/moadalami/github/dwm-bar/dwmpid)") },
 	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("shutdown now") },
 	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
+	{ MODKEY,				XK_r,						spawn,			SHCMD("ranger") },
 
 	{ MODKEY,               XK_t,						setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_space,					setlayout,      {.v = &layouts[1]} },
