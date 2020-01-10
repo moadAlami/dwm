@@ -121,7 +121,6 @@ static Key keys[] = {
 	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/moadalami/github/dwm-bar/dwmpid)") },
 	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("shutdown now") },
 	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
-	{ MODKEY,				XK_r,						spawn,			SHCMD("ranger") },
 
 	{ MODKEY,               XK_t,						setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_space,					setlayout,      {.v = &layouts[1]} },
