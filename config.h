@@ -99,18 +99,18 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "80x20"
 
 #include <X11/XF86keysym.h>
 /* volume control */
-static const char *inc_vol[] = { "/home/moadalami/Scripts/volume/inc_vol", NULL };
-static const char *dec_vol[] = { "/home/moadalami/Scripts/volume/dec_vol", NULL };
-static const char *toggle_vol[] = { "/home/moadalami/Scripts/volume/toggle_vol", NULL };
+static const char *inc_vol[] = { "/home/mouad/Scripts/volume/inc_vol", NULL };
+static const char *dec_vol[] = { "/home/mouad/Scripts/volume/dec_vol", NULL };
+static const char *toggle_vol[] = { "/home/mouad/Scripts/volume/toggle_vol", NULL };
 
 /* brightness control */
-static const char *inc_bright[] = { "/home/moadalami/Scripts/brightness/inc_bright", NULL };
-static const char *dec_bright[] = { "/home/moadalami/Scripts/brightness/dec_bright", NULL };
+static const char *inc_bright[] = { "/home/mouad/Scripts/brightness/inc_bright", NULL };
+static const char *dec_bright[] = { "/home/mouad/Scripts/brightness/dec_bright", NULL };
 
 /* music player controls */
-static const char *next[] = { "/home/moadalami/Scripts/music/next", NULL };
-static const char *previous[] = { "/home/moadalami/Scripts/music/previous", NULL };
-static const char *pause_play[] = { "/home/moadalami/Scripts/music/pause-play", NULL };
+static const char *next[] = { "/home/mouad/Scripts/music/next", NULL };
+static const char *previous[] = { "/home/mouad/Scripts/music/previous", NULL };
+static const char *pause_play[] = { "/home/mouad/Scripts/music/pause-play", NULL };
 
 /* movestack patch */
 #include "movestack.c"
@@ -118,7 +118,7 @@ static const char *pause_play[] = { "/home/moadalami/Scripts/music/pause-play", 
 static Key keys[] = {
 	/* modifier             key        					function        argument */
 
-	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/moadalami/github/dwm-bar/dwmpid)") },
+	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
 	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("shutdown now") },
 	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
 	{ MODKEY,				XK_r,						spawn,			SHCMD("kitty --execute ranger") },
@@ -155,7 +155,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_F3,						spawn,			{.v = next } },
 
 	/* screenshot */
-	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/moadalami/Pictures/Screenshots/'") },
+	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/'") },
 
 	{ MODKEY,               XK_s,      					togglesticky,   {0} },
 	{ MODKEY,               XK_a,  	   					togglescratch,  {.v = scratchpadcmd } },
