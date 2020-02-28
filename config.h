@@ -49,7 +49,7 @@ static const Rule rules[] = {
 	{ "kitty",   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
 	{ "st",		   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
 	{ "xclock",		   	NULL,		NULL,	0,			0,				1,		  0,		 0,			-1 },
-	{ "QGIS3",		   	NULL,		NULL,	1 << 7,		0,				0,		  0,		 0,			-1 },
+	{ "QGIS3",		   	NULL,		NULL,	1 << 7,		1,				1,		  0,		 0,			-1 },
 };
 
 /* layout(s) */
@@ -119,7 +119,7 @@ static Key keys[] = {
 	/* modifier             key        					function        argument */
 
 	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
-	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("shutdown now") },
+	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("[ $(echo -e 'No\nYes' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now") },
 	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
 	{ MODKEY,				XK_r,						spawn,			SHCMD("kitty --execute ranger") },
 
