@@ -120,7 +120,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_t,						setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_space,					setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,               XK_m,						setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,               XK_g,						setlayout,      {.v = &layouts[5]} },
+	{ MODKEY,               XK_g,						setlayout,      {.v = &layouts[3]} },
 
 	/* moveresize patch */
 	{ Mod1Mask,					XK_j,	moveresize,		{.v = (int []){ 0, 25, 0, 0 }}},
