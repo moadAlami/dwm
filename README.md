@@ -55,7 +55,6 @@ This build uses the following patches:
   * [dragmfact](https://dwm.suckless.org/patches/dragmfact/) - Adds the ability to resize the split in the tile layout by holding the modkey and dragging the mouse.
   * [fakefullscreen](https://dwm.suckless.org/patches/fakefullscreen/) - Only allows clients to "fullscreen" into the space given to them.
   * [fullscreen](https://dwm.suckless.org/patches/fullscreen/) - Applies the monocle layout with the focused client on top and hides the bar.
-  * [gridmode](https://dwm.suckless.org/patches/gridmode/) - Adds the grid layout to dwm.
   * [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/) - Prevents dwm from drawing tags with no clients on the bar.
   * [moveresize](https://dwm.suckless.org/patches/moveresize/) - Adds the ability to move and resize floating clients.
   * [movestack](https://dwm.suckless.org/patches/movestack/) - Allows for moving clients around the stack and swapping them with the master.

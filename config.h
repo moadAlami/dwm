@@ -61,14 +61,11 @@ static const float smfact     = 0.00; /* factor of tiled clients [0.00..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
-#include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	/* gridmode patch */
-	{ "HHH",      grid },
 };
 
 /* key definitions */
@@ -120,7 +117,6 @@ static Key keys[] = {
 	{ MODKEY,               XK_t,						setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,               XK_space,					setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,               XK_m,						setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,               XK_g,						setlayout,      {.v = &layouts[3]} },
 
 	/* moveresize patch */
 	{ Mod1Mask,					XK_j,	moveresize,		{.v = (int []){ 0, 25, 0, 0 }}},
