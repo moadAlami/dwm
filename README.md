@@ -62,7 +62,6 @@ This build uses the following patches:
   * [moveresize](https://dwm.suckless.org/patches/moveresize/) - Adds the ability to move and resize floating clients.
   * [movestack](https://dwm.suckless.org/patches/movestack/) - Allows for moving clients around the stack and swapping them with the master.
   * [noborder](https://dwm.suckless.org/patches/noborder/) - Remove the border when there is only one window visible.
-  * [notitle](https://dwm.suckless.org/patches/notitle/) - Removes the client title from the bar.
   * [pertag](https://dwm.suckless.org/patches/pertag/) - Keeps layout, mwfact, barpos and nmaster per tag.
   * [ru gaps](https://dwm.suckless.org/patches/ru_gaps/) - Adds useless gaps to dwm.
   * [savefloats](https://dwm.suckless.org/patches/save_floats/) - Saves size and position of every floating window before it is forced into tiled mode. If the window is made floating again, the old dimensions will be restored.
