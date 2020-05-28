@@ -86,6 +86,8 @@ typedef union {
 	int i;
 	unsigned int ui;
 	float f;
+	/* stackmfact patch */
+	float sf;
 	const void *v;
 } Arg;
 
@@ -138,6 +140,10 @@ typedef struct Pertag Pertag;
 struct Monitor {
 	char ltsymbol[16];
 	float mfact;
+
+	/* stackmfact patch */
+	float smfact;
+
 	int nmaster;
 	int num;
 	int by;               /* bar geometry */
@@ -262,6 +268,10 @@ static void setgaps(const Arg *arg);
 
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
+
+/* stackmfact patch */
+static void setsmfact(const Arg *arg);
+
 static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
@@ -828,6 +838,10 @@ createmon(void)
 	m = ecalloc(1, sizeof(Monitor));
 	m->tagset[0] = m->tagset[1] = 1;
 	m->mfact = mfact;
+
+	/* stackmfact patch */
+	m->smfact = smfact;
+
 	m->nmaster = nmaster;
 	m->showbar = showbar;
 	m->topbar = topbar;
@@ -1986,6 +2000,20 @@ setmfact(const Arg *arg)
 	arrange(selmon);
 }
 
+/* setmfact patch */
+void
+setsmfact(const Arg *arg) {
+	float sf;
+
+	if(!arg || !selmon->lt[selmon->sellt]->arrange)
+		return;
+	sf = arg->sf < 1.0 ? arg->sf + selmon->smfact : arg->sf - 1.0;
+	if(sf < 0 || sf > 0.9)
+		return;
+	selmon->smfact = sf;
+	arrange(selmon);
+}
+
 void
 setup(void)
 {
@@ -2156,7 +2184,7 @@ tile(Monitor *m)
 {
 	/* ru_gaps patch */
 	/* unsigned int i, n, h, mw, my, ty; */
-	unsigned int i, n, h, mw, my, ty, ns;
+	unsigned int i, n, h, smh, mw, my, ty, ns;
 
 	Client *c;
 
@@ -2185,9 +2213,28 @@ tile(Monitor *m)
 			resize(c, m->wx + m->gappx, m->wy + my, mw - 2*c->bw - m->gappx*(5-ns)/2, h - 2*c->bw, 0);
 			my += HEIGHT(c) + m->gappx;
 		} else {
-			h = (m->wh - ty) / (n - i) - m->gappx;
-			resize(c, m->wx + mw + m->gappx/ns, m->wy + ty, m->ww - mw - (2*c->bw) - m->gappx*(5-ns)/2, h - 2*c->bw, 0);
-			ty += HEIGHT(c) + m->gappx;
+			/* stackmfact patch */
+			/* h = (m->wh - ty) / (n - i) - m->gappx; */
+			/* resize(c, m->wx + mw + m->gappx/ns, m->wy + ty, m->ww - mw - (2*c->bw) - m->gappx*(5-ns)/2, h - 2*c->bw, 0); */
+			/* ty += HEIGHT(c) + m->gappx; */
+			smh = m->mh * m->smfact;
+			if(!(nexttiled(c->next)))
+				h = (m->wh - ty) / (n - i);
+			else
+				h = (m->wh - smh - ty) / (n - i);
+			if(h < minwsz) {
+				c->isfloating = True;
+				XRaiseWindow(dpy, c->win);
+				resize(c, m->mx + (m->mw / 2 - WIDTH(c) / 2), m->my + (m->mh / 2 - HEIGHT(c) / 2), m->ww - mw - (2*c->bw), h - (2*c->bw), False);
+				ty -= HEIGHT(c);
+			}
+			else
+				resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), False);
+			if(!(nexttiled(c->next)))
+				ty += HEIGHT(c) + smh;
+			else
+				ty += HEIGHT(c);
+
 		}
 }
 

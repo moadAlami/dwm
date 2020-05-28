@@ -4,6 +4,10 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+
+/* stackmfact patch */
+static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for smfact */
+
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
@@ -147,6 +151,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_a,  	   					togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               XK_h,      					setmfact,       {.f = -0.05} },
  	{ MODKEY,               XK_l,      					setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,     XK_h,      					setsmfact,      {.f = +0.05} },
+	{ MODKEY|ShiftMask,     XK_l,      					setsmfact,      {.f = -0.05} },
 	{ MODKEY|ShiftMask,     XK_j,      					movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,     XK_k,      					movestack,      {.i = -1 } },
 
