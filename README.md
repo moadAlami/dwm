@@ -52,7 +52,6 @@ and (re)compiling the source code.
 This build uses the following patches:
 
   * [alpha](https://dwm.suckless.org/patches/alpha/) - Allow dwm to have translucent bars, while keeping all the text on it opaque.
-  * [centeredmaster](https://dwm.suckless.org/patches/centeredmaster/) - Adds the centeredmaster and centeredfloatingmaster layouts to dwm.
   * [dragmfact](https://dwm.suckless.org/patches/dragmfact/) - Adds the ability to resize the split in the tile layout by holding the modkey and dragging the mouse.
   * [fakefullscreen](https://dwm.suckless.org/patches/fakefullscreen/) - Only allows clients to "fullscreen" into the space given to them.
   * [fullscreen](https://dwm.suckless.org/patches/fullscreen/) - Applies the monocle layout with the focused client on top and hides the bar.
