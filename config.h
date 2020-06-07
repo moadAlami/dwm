@@ -102,11 +102,6 @@ static const char *toggle_vol[] = { "/home/mouad/Scripts/volume/toggle_vol", NUL
 static const char *inc_bright[] = { "/home/mouad/Scripts/brightness/inc_bright", NULL };
 static const char *dec_bright[] = { "/home/mouad/Scripts/brightness/dec_bright", NULL };
 
-/* music player controls */
-static const char *next[] = { "/home/mouad/Scripts/music/next", NULL };
-static const char *previous[] = { "/home/mouad/Scripts/music/previous", NULL };
-static const char *pause_play[] = { "/home/mouad/Scripts/music/pause-play", NULL };
-
 /* movestack patch */
 #include "movestack.c"
 
@@ -140,9 +135,9 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = dec_vol } },
 	{ 0,					XF86XK_AudioMute,			spawn,			{.v = toggle_vol } },
 
-	{ MODKEY,				XK_F1,						spawn,			{.v = previous } },
-	{ MODKEY,				XK_F2,						spawn,			{.v = pause_play } },
-	{ MODKEY,				XK_F3,						spawn,			{.v = next } },
+	{ MODKEY,				XK_F1,						spawn,			SHCMD("mpc prev") },
+	{ MODKEY,				XK_F2,						spawn,			SHCMD("mpc toggle") },
+	{ MODKEY,				XK_F3,						spawn,			SHCMD("mpc next") },
 
 	/* screenshot */
 	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/'") },
