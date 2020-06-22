@@ -92,6 +92,11 @@ static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "110x25", NULL };
 
+/* statuscmd patch */
+/* static char *statuscmds[] = { "notify-send Mouse$BUTTON" }; */
+static char *statuscmds[] = { "" };
+static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
+
 #include <X11/XF86keysym.h>
 /* volume control */
 static const char *inc_vol[] = { "/home/mouad/Scripts/volume/inc_vol", NULL };
@@ -109,6 +114,7 @@ static Key keys[] = {
 	/* modifier             key        					function        argument */
 
 	{ 0,					XK_Num_Lock,				spawn,			SHCMD("kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
+	/* { 0,					XK_Num_Lock,				spawn,			SHCMD("notify-send 'numlock trigger' && pkill -RTMIN+11 dwmblocks") }, */
 	{ MODKEY|ShiftMask,		XK_o,						spawn,			SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now && rm /home/mouad/github/dwm-bar/dwmpid") },
 	{ MODKEY|ShiftMask,		XK_x,						spawn,			SHCMD("i3lock") },
 	{ MODKEY,				XK_r,						spawn,			SHCMD("st -e ranger") },
@@ -135,13 +141,15 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = dec_vol } },
 	{ 0,					XF86XK_AudioMute,			spawn,			{.v = toggle_vol } },
 
-	{ MODKEY,				XK_F1,						spawn,			SHCMD("mpc prev") },
-	{ MODKEY,				XK_F2,						spawn,			SHCMD("mpc toggle") },
-	{ MODKEY,				XK_F3,						spawn,			SHCMD("mpc next") },
+	{ MODKEY,				XK_F1,						spawn,			SHCMD("mpc prev && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
+	{ MODKEY,				XK_F2,						spawn,			SHCMD("mpc toggle && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
+	{ MODKEY,				XK_F3,						spawn,			SHCMD("mpc next && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
 
 	/* screenshot */
-	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/'") },
+	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'") },
 
+	{ MODKEY|ShiftMask,		XK_e,						spawn,			SHCMD("dmenuemoji") },
+	
 	{ MODKEY,               XK_s,      					togglesticky,   {0} },
 	{ MODKEY,               XK_a,  	   					togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,               XK_h,      					setmfact,       {.f = -0.05} },
@@ -186,7 +194,6 @@ static Key keys[] = {
 	TAGKEYS(                XK_egrave,                     6)
 	TAGKEYS(                XK_underscore,                 7)
 	TAGKEYS(                XK_ccedilla,                   8)
-	/* { MODKEY|ShiftMask,             XK_q,      quit,           {0} }, */
 };
 
 /* button definitions */
@@ -196,7 +203,13 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+
+	/* statuscmd patch */
+	/* { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } }, */
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = statuscmd } },
+	{ ClkStatusText,        0,              Button3,        spawn,          {.v = statuscmd } },
+
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },

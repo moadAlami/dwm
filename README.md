@@ -66,6 +66,7 @@ This build uses the following patches:
   * [setborderpx](https://dwm.suckless.org/patches/setborderpx/) - Allows for changing border pixels at runtime
   * [stackmfact](https://dwm.suckless.org/patches/stackmfact/) - Allows for vertically resizing clients in the stack.
   * [status2d](https://dwm.suckless.org/patches/status2d/) - Allows colors and rectangle drawing in DWM status bar.
+  * [statuscmd](https://dwm.suckless.org/patches/statuscmd/) - Adds the ability to execute shell commands based on the mouse button and position when clicking the status bar.
   * [sticky](https://dwm.suckless.org/patches/sticky/) - Adds the ability to make a client sticky. Which makes it visible on all tags.
   * [swallow](https://dwm.suckless.org/patches/swallow/) - Adds "window swallowing" to dwm.
   * [zoomswap](https://dwm.suckless.org/patches/zoomswap/) - Swaps the current window with the previous master when zooming.

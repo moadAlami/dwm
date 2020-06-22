@@ -200,6 +200,10 @@ static void clientmessage(XEvent *e);
 static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
+
+/* statuscmd patch */
+static void copyvalidchars(char *text, char *rawtext);
+
 static Monitor *createmon(void);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
@@ -242,7 +246,6 @@ static void moveresize(const Arg *arg);
 static Client *nexttiled(Client *c);
 /* static void pop(Client *); */
 static void propertynotify(XEvent *e);
-/* static void quit(const Arg *arg); */
 static Monitor *recttomon(int x, int y, int w, int h);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizeclient(Client *c, int x, int y, int w, int h);
@@ -332,6 +335,11 @@ static const char broken[] = "broken";
 /* status2d patch */
 /* static char stext[256]; */
 static char stext[1024];
+
+/* statuscmd patch */
+static char rawstext[256];
+static int statuscmdn;
+static char lastbutton[] = "-";
 
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
@@ -601,6 +609,9 @@ buttonpress(XEvent *e)
 	Monitor *m;
 	XButtonPressedEvent *ev = &e->xbutton;
 
+	/* statuscmd patch */
+	*lastbutton = '0' + ev->button;
+
 	click = ClkRootWin;
 	/* focus monitor if necessary */
 	if ((m = wintomon(ev->window)) && m != selmon) {
@@ -631,9 +642,30 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-		else if (ev->x > selmon->ww - TEXTW(stext))
+
+		/* statuscmd patch */
+		/* else if (ev->x > selmon->ww - TEXTW(stext)) */
+		else if (ev->x > (x = selmon->ww - TEXTW(stext) + lrpad)) {
 			click = ClkStatusText;
-		else
+		/* else */
+			char *text = rawstext;
+			int i = -1;
+			char ch;
+			statuscmdn = 0;
+			while (text[++i]) {
+				if ((unsigned char)text[i] < ' ') {
+					ch = text[i];
+					text[i] = '\0';
+					x += TEXTW(text) - lrpad;
+					text[i] = ch;
+					text += i+1;
+					i = -1;
+					if (x >= ev->x) break;
+					if (ch <= LENGTH(statuscmds)) statuscmdn = ch - 1;
+				}
+			}
+		} else
+
 			click = ClkWinTitle;
 
 	} else if ((c = wintoclient(ev->window))) {
@@ -825,6 +857,20 @@ configurerequest(XEvent *e)
 		XConfigureWindow(dpy, ev->window, ev->value_mask, &wc);
 	}
 	XSync(dpy, False);
+}
+
+/* statuscmd patch */
+void
+copyvalidchars(char *text, char *rawtext)
+{
+	int i = -1, j = 0;
+
+	while(rawtext[++i]) {
+		if ((unsigned char)rawtext[i] >= ' ') {
+			text[j++] = rawtext[i];
+		}
+	}
+	text[j] = '\0';
 }
 
 Monitor *
@@ -1632,12 +1678,6 @@ propertynotify(XEvent *e)
 	}
 }
 
-/* void */
-/* quit(const Arg *arg) */
-/* { */
-/* 	running = 0; */
-/* } */
-
 Monitor *
 recttomon(int x, int y, int w, int h)
 {
@@ -2145,6 +2185,13 @@ spawn(const Arg *arg)
 	if (arg->v == dmenucmd)
 		dmenumon[0] = '0' + selmon->num;
 
+	/* statuscmd patch */
+	else if (arg->v == statuscmd) {
+		statuscmd[2] = statuscmds[statuscmdn];
+		setenv("BUTTON", lastbutton, 1);
+	}
+
+
 	/* scratchpad patch */
 	selmon->tagset[selmon->seltags] &= ~scratchtag;
 
@@ -2649,8 +2696,16 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
-	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
+	/* statuscmd patch */
+	/* if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext))) */
+	if (!gettextprop(root, XA_WM_NAME, rawstext, sizeof(rawstext)))
+
 		strcpy(stext, "dwm-"VERSION);
+
+	/* statuscmd patch */
+	else
+		copyvalidchars(stext, rawstext);
+
 	drawbar(selmon);
 }
 
