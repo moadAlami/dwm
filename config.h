@@ -10,7 +10,7 @@ static const unsigned int minwsz    = 20;       /* Minimal heigt of a client for
 
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "monospace:size=10", "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char normbgcolor[]           = "#2F343F";
 static const char normbordercolor[]       = "#2f343f";
