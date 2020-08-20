@@ -140,9 +140,13 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioLowerVolume,	spawn,			{.v = dec_vol } },
 	{ 0,					XF86XK_AudioMute,			spawn,			{.v = toggle_vol } },
 
-	{ MODKEY,				XK_F1,						spawn,			SHCMD("mpc prev && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
-	{ MODKEY,				XK_F2,						spawn,			SHCMD("mpc toggle && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
-	{ MODKEY,				XK_F3,						spawn,			SHCMD("mpc next && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") },
+	/* { MODKEY,				XK_F1,						spawn,			SHCMD("mpc prev && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") }, */
+	/* { MODKEY,				XK_F2,						spawn,			SHCMD("mpc toggle && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") }, */
+	/* { MODKEY,				XK_F3,						spawn,			SHCMD("mpc next && kill -9 $(cat /home/mouad/github/dwm-bar/dwmpid)") }, */
+
+	{ MODKEY,				XK_F1,						spawn,			SHCMD("mpc prev") },
+	{ MODKEY,				XK_F2,						spawn,			SHCMD("mpc toggle") },
+	{ MODKEY,				XK_F3,						spawn,			SHCMD("mpc next") },
 
 	/* screenshot */
 	{ MODKEY,				XK_F12,						spawn,			SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'") },
@@ -176,8 +180,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_f,						zoom,           {0} },
 	{ MODKEY,               XK_Tab,						view,           {0} },
 	{ MODKEY|ShiftMask,     XK_q,						killclient,     {0} },
-	{ MODKEY,             	XK_f,						fullscreen,     {0} },
+	{ MODKEY|ShiftMask,     XK_t,      					togglefakefullscreen, {0} },
 	{ MODKEY|ShiftMask,     XK_space,					togglefloating, {0} },
+	{ MODKEY,             	XK_f,      					togglefullscr,  {0} },
 	{ MODKEY,               XK_0,						view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,     XK_0,						tag,            {.ui = ~0 } },
 	{ MODKEY,               XK_comma,					focusmon,       {.i = -1 } },
