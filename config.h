@@ -99,13 +99,13 @@ static char *statuscmd[] = { "/bin/sh", "-c", NULL, NULL };
 
 #include <X11/XF86keysym.h>
 /* volume control */
-static const char *inc_vol[] = { "/home/mouad/Scripts/volume/inc_vol", NULL };
-static const char *dec_vol[] = { "/home/mouad/Scripts/volume/dec_vol", NULL };
-static const char *toggle_vol[] = { "/home/mouad/Scripts/volume/toggle_vol", NULL };
+static const char *inc_vol[] = { "/home/mouad/.local/bin/volume/inc_vol", NULL };
+static const char *dec_vol[] = { "/home/mouad/.local/bin/volume/dec_vol", NULL };
+static const char *toggle_vol[] = { "/home/mouad/.local/bin/volume/toggle_vol", NULL };
 
 /* brightness control */
-static const char *inc_bright[] = { "/home/mouad/Scripts/brightness/inc_bright", NULL };
-static const char *dec_bright[] = { "/home/mouad/Scripts/brightness/dec_bright", NULL };
+static const char *inc_bright[] = { "/home/mouad/.local/bin/brightness/inc_bright", NULL };
+static const char *dec_bright[] = { "/home/mouad/.local/bin/brightness/dec_bright", NULL };
 
 /* movestack patch */
 #include "movestack.c"
