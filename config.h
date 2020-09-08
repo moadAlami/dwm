@@ -45,14 +45,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class			instance    title   tags mask   iscentered    isfloating isterminal	noswallow	monitor */
-	{ "Gimp",			NULL,       NULL,   0,          0,				1,		  0,		 0,			-1 },
-	{ "firefox",		NULL,       NULL,   1 << 1,	    0,				0,		  0,		 0,			-1 },
-	{ "pavucontrol",    NULL,		NULL,	0,			1,				1,		  0,		 0,			-1 },
+	{ "Gimp",			NULL,       NULL,   1 << 5,     0,				1,		  0,		 0,			-1 },
+	{ "Pavucontrol",    NULL,		NULL,	0,			1,				1,		  0,		 0,			-1 },
 	{ "discord",   		NULL,		NULL,	1 << 3,		0,				0,		  0,		 0,			-1 },
 	{ "Steam",   		NULL,		NULL,	1 << 4,		0,				0,		  0,		 0,			-1 },
-	{ "kitty",   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
 	{ "st",		   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
-	{ "xclock",		   	NULL,		NULL,	0,			0,				1,		  0,		 0,			-1 },
+	{ "XClock",		   	NULL,		NULL,	0,			0,				1,		  0,		 0,			-1 },
 	{ "QGIS3",		   	NULL,		NULL,	1 << 7,		1,				1,		  0,		 0,			-1 },
 };
 
