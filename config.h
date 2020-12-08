@@ -51,7 +51,8 @@ static const Rule rules[] = {
 	{ "Steam",   		NULL,		NULL,	1 << 4,		0,				0,		  0,		 0,			-1 },
 	{ "st",		   		NULL,		NULL,	0,			0,				0,		  1,		 1,			-1 },
 	{ "XClock",		   	NULL,		NULL,	0,			0,				1,		  0,		 0,			-1 },
-	{ "QGIS3",		   	NULL,		NULL,	1 << 7,		1,				1,		  0,		 0,			-1 },
+	{ "QGIS3",		   	NULL,		NULL,	0,		1,				1,		  0,		 0,			-1 },
+	{ "QjackCtl",		   	NULL,		NULL,	0,		1,				1,		  0,		 0,			-1 },
 };
 
 /* layout(s) */
