@@ -105,6 +105,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, 
+	{MODKEY,			XK_s,	   togglesticky,   {0}},
 	TAGKEYS(XK_ampersand                , 0)
 	TAGKEYS(XK_eacute                   , 1)
 	TAGKEYS(XK_quotedbl                 , 2)
