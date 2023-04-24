@@ -1,12 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+
+static const char *fonts[] = { "monospace:size=11",
+    "Noto Color Emoji:pixelsize=11:antialias=true:autohint=true"};
+static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -19,6 +21,18 @@ static const char *colors[][3]      = {
 };
 
 #include "movestack.c"
+#include <X11/XF86keysym.h>
+/* volume control */
+static const char *inc_vol[] = {"/home/mouad/.local/bin/volume/inc_vol", NULL};
+static const char *dec_vol[] = {"/home/mouad/.local/bin/volume/dec_vol", NULL};
+static const char *toggle_vol[] = {"/home/mouad/.local/bin/volume/toggle_vol",
+                                   NULL};
+
+/* brightness control */
+static const char *inc_bright[] = {
+    "/home/mouad/.local/bin/brightness/inc_bright", NULL};
+static const char *dec_bright[] = {
+    "/home/mouad/.local/bin/brightness/dec_bright", NULL};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -98,6 +112,35 @@ static const Key keys[] = {
 	TAGKEYS(XK_egrave                   , 6)
 	TAGKEYS(XK_underscore               , 7)
 	TAGKEYS(XK_ccedilla                 , 8)
+	/* Custom commands */
+
+	{MODKEY | ShiftMask, XK_o, spawn, SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now")},
+	{MODKEY | ShiftMask, XK_x, spawn, SHCMD("i3lock -c 252525")},
+
+	/* dunst control */
+	{ControlMask, XK_egrave, spawn, SHCMD("dunstctl history-pop")},
+	{ControlMask, XK_space, spawn, SHCMD("dunstctl close")},
+	{ControlMask | ShiftMask, XK_space, spawn, SHCMD("dunstctl close-all")},
+
+	{0, XF86XK_MonBrightnessUp, spawn, {.v = inc_bright}},
+	{0, XF86XK_MonBrightnessDown, spawn, {.v = dec_bright}},
+
+	{0, XF86XK_AudioRaiseVolume, spawn, {.v = inc_vol}},
+	{0, XF86XK_AudioLowerVolume, spawn, {.v = dec_vol}},
+	{0, XF86XK_AudioMute, spawn, {.v = toggle_vol}},
+
+	{MODKEY, XK_F1, spawn, {.v = dec_vol}},
+	{MODKEY, XK_F2, spawn, {.v = inc_vol}},
+	{MODKEY, XK_F3, spawn, {.v = toggle_vol}},
+
+	{Mod1Mask, XK_F1, spawn, SHCMD("mpc prev")},
+	{Mod1Mask, XK_F2, spawn, SHCMD("mpc toggle")},
+	{Mod1Mask, XK_F3, spawn, SHCMD("mpc next")},
+
+	{0, XK_Pause, spawn, SHCMD("playerctl play-pause")},
+
+	/* screenshot */
+	{MODKEY, XK_F12, spawn, SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'")},
 };
 
 /* button definitions */
