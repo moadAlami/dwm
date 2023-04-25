@@ -111,15 +111,15 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, 
 	{MODKEY,			XK_s,	   togglesticky,   {0}},
-	TAGKEYS(XK_ampersand                , 0)
-	TAGKEYS(XK_eacute                   , 1)
-	TAGKEYS(XK_quotedbl                 , 2)
-        TAGKEYS(XK_apostrophe               , 3)
-	TAGKEYS(XK_parenleft                , 4)
-	TAGKEYS(XK_minus                    , 5)
-	TAGKEYS(XK_egrave                   , 6)
-	TAGKEYS(XK_underscore               , 7)
-	TAGKEYS(XK_ccedilla                 , 8)
+	TAGKEYS(XK_1                , 0)
+	TAGKEYS(XK_2                   , 1)
+	TAGKEYS(XK_3                 , 2)
+        TAGKEYS(XK_4               , 3)
+	TAGKEYS(XK_5                , 4)
+	TAGKEYS(XK_6                    , 5)
+	TAGKEYS(XK_7                   , 6)
+	TAGKEYS(XK_8               , 7)
+	TAGKEYS(XK_9                 , 8)
 	/* Custom commands */
 
 	{MODKEY | ShiftMask, XK_o, spawn, SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now")},
