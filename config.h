@@ -126,7 +126,7 @@ static const Key keys[] = {
 	{MODKEY | ShiftMask, XK_x, spawn, SHCMD("i3lock -c 252525")},
 
 	/* dunst control */
-	{ControlMask, XK_egrave, spawn, SHCMD("dunstctl history-pop")},
+	{ControlMask, XK_7, spawn, SHCMD("dunstctl history-pop")},
 	{ControlMask, XK_space, spawn, SHCMD("dunstctl close")},
 	{ControlMask | ShiftMask, XK_space, spawn, SHCMD("dunstctl close-all")},
 
