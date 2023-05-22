@@ -112,19 +112,19 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, 
 	{MODKEY,			XK_s,	   togglesticky,   {0}},
-	TAGKEYS(XK_1                , 0)
-	TAGKEYS(XK_2                   , 1)
-	TAGKEYS(XK_3                 , 2)
-        TAGKEYS(XK_4               , 3)
-	TAGKEYS(XK_5                , 4)
+	TAGKEYS(XK_1                    , 0)
+	TAGKEYS(XK_2                    , 1)
+	TAGKEYS(XK_3                    , 2)
+        TAGKEYS(XK_4                    , 3)
+	TAGKEYS(XK_5                    , 4)
 	TAGKEYS(XK_6                    , 5)
-	TAGKEYS(XK_7                   , 6)
-	TAGKEYS(XK_8               , 7)
-	TAGKEYS(XK_9                 , 8)
+	TAGKEYS(XK_7                    , 6)
+	TAGKEYS(XK_8                    , 7)
+	TAGKEYS(XK_9                    , 8)
 	/* Custom commands */
 
 	{MODKEY | ShiftMask, XK_o, spawn, SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now")},
-	{MODKEY | ShiftMask, XK_x, spawn, SHCMD("i3lock -c 252525")},
+	{MODKEY | ShiftMask, XK_l, spawn, SHCMD("slock")},
 
 	/* dunst control */
 	{ControlMask, XK_7, spawn, SHCMD("dunstctl history-pop")},
