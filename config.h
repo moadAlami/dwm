@@ -126,6 +126,11 @@ static const Key keys[] = {
 	{MODKEY | ShiftMask, XK_o, spawn, SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now")},
 	{MODKEY | ShiftMask, XK_l, spawn, SHCMD("slock")},
 
+	/* keyboard layout */
+	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && notify-send '🇬🇧'")},
+	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && notify-send '🇫🇷'")},
+
+
 	/* dunst control */
 	{ControlMask, XK_7, spawn, SHCMD("dunstctl history-pop")},
 	{ControlMask, XK_space, spawn, SHCMD("dunstctl close")},
