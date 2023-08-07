@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",	NULL,       NULL,       1 << 5,       1,           -1 },
 	{ "discord",	NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Steam",	NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "steam",	NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
@@ -152,6 +152,7 @@ static const Key keys[] = {
 	{Mod1Mask, XK_F3, spawn, SHCMD("mpc next")},
 
 	{0, XK_Pause, spawn, SHCMD("playerctl play-pause")},
+	{0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 
 	/* screenshot */
 	{MODKEY, XK_F12, spawn, SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'")},
