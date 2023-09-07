@@ -127,8 +127,8 @@ static const Key keys[] = {
 	{MODKEY | ShiftMask, XK_l, spawn, SHCMD("slock")},
 
 	/* keyboard layout */
-	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && notify-send '🇬🇧'")},
-	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && notify-send '🇫🇷'")},
+	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && kill -45 $(pidof dwmblocks)")},
+	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && kill -45 $(pidof dwmblocks)")},
 
 
 	/* dunst control */
