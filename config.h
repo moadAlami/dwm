@@ -127,8 +127,8 @@ static const Key keys[] = {
 	{MODKEY | ShiftMask, XK_l, spawn, SHCMD("slock")},
 
 	/* keyboard layout */
-	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && notify-send '🇬🇧'")},
-	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && notify-send '🇫🇷'")},
+	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && kill -45 $(pidof dwmblocks)")},
+	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && kill -45 $(pidof dwmblocks)")},
 
 
 	/* dunst control */
@@ -152,6 +152,7 @@ static const Key keys[] = {
 	{Mod1Mask, XK_F3, spawn, SHCMD("mpc next")},
 
 	{0, XK_Pause, spawn, SHCMD("playerctl play-pause")},
+	{0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 
 	/* screenshot */
 	{MODKEY, XK_F12, spawn, SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'")},
