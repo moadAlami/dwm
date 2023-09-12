@@ -30,6 +30,8 @@ static const char *dec_vol[] = {"/home/mouad/.local/bin/volume/dec_vol", NULL};
 static const char *toggle_vol[] = {"/home/mouad/.local/bin/volume/toggle_vol",
                                    NULL};
 
+static const char *wallpaper[] = {"/home/mouad/.local/bin/background", NULL};
+
 /* brightness control */
 static const char *inc_bright[] = {
     "/home/mouad/.local/bin/brightness/inc_bright", NULL};
@@ -126,6 +128,7 @@ static const Key keys[] = {
 	{MODKEY | ShiftMask, XK_o, spawn, SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now")},
 	{MODKEY | ShiftMask, XK_l, spawn, SHCMD("slock")},
 
+
 	/* keyboard layout */
 	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && kill -45 $(pidof dwmblocks)")},
 	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && kill -45 $(pidof dwmblocks)")},
@@ -142,6 +145,8 @@ static const Key keys[] = {
 	{0, XF86XK_AudioRaiseVolume, spawn, {.v = inc_vol}},
 	{0, XF86XK_AudioLowerVolume, spawn, {.v = dec_vol}},
 	{0, XF86XK_AudioMute, spawn, {.v = toggle_vol}},
+
+	{MODKEY, XK_r, spawn, {.v = wallpaper}},
 
 	{MODKEY, XK_F1, spawn, {.v = dec_vol}},
 	{MODKEY, XK_F2, spawn, {.v = inc_vol}},
