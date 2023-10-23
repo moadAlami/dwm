@@ -163,6 +163,8 @@ static const Key keys[] = {
 	{0, XK_Pause, spawn, SHCMD("playerctl play-pause")},
 	{0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 
+	{MODKEY, XK_e, spawn, SHCMD("xdotool type $(grep -Ev '^($|#)' ~/.config/bookmarks | dmenu -i -l 50 | cut -d' ' -f1)")},
+
 	/* screenshot */
 	{MODKEY, XK_F12, spawn, SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'")},
 };
