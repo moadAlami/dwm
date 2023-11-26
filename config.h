@@ -27,16 +27,13 @@ static const char *colors[][3]      = {
 /* volume control */
 static const char *inc_vol[] = {"/home/mouad/.local/bin/volume/inc_vol", NULL};
 static const char *dec_vol[] = {"/home/mouad/.local/bin/volume/dec_vol", NULL};
-static const char *toggle_vol[] = {"/home/mouad/.local/bin/volume/toggle_vol",
-                                   NULL};
+static const char *toggle_vol[] = {"/home/mouad/.local/bin/volume/toggle_vol", NULL};
 
 static const char *wallpaper[] = {"/home/mouad/.local/bin/background", NULL};
 
 /* brightness control */
-static const char *inc_bright[] = {
-    "/home/mouad/.local/bin/brightness/inc_bright", NULL};
-static const char *dec_bright[] = {
-    "/home/mouad/.local/bin/brightness/dec_bright", NULL};
+static const char *inc_bright[] = { "/home/mouad/.local/bin/brightness/inc_bright", NULL};
+static const char *dec_bright[] = { "/home/mouad/.local/bin/brightness/dec_bright", NULL};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -82,8 +79,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", "#000000", "-nf", "#268bd2", "-sb", "#268bd2", "-sf", "#000000", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char scratchpadname[]  = { "scratchpad" };
+static const char *scratchpadcmd[] = { "/home/mouad/.local/bin/scratch.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
