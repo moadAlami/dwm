@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	{ "zoom",       NULL,       NULL,       1 << 0,       0,           -1 },
 	{ "Gimp",	NULL,       NULL,       1 << 5,       1,           -1 },
 	{ "discord",	NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "steam",	NULL,       NULL,       1 << 4,       0,           -1 },
+	{ NULL,		NULL,       "Steam",    1 << 4,       0,           -1 },
 	{ "qgis",	NULL,       NULL,       1 << 7,       0,           -1 },
 };
 
