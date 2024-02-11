@@ -3,6 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 2;        /* 2 is the default spacing around the bar's font */
@@ -43,12 +44,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "zoom",       NULL,       NULL,       1 << 0,       0,           -1 },
-	{ "Gimp",	NULL,       NULL,       1 << 5,       1,           -1 },
-	{ "discord",	NULL,       NULL,       1 << 3,       0,           -1 },
-	{ NULL,		NULL,       "Steam",    1 << 4,       0,           -1 },
-	{ "qgis",	NULL,       NULL,       1 << 7,       0,           -1 },
+	/* class	instance  title       tags mask     isfloating	isterminal  noswallow   monitor */
+	{ "zoom",       NULL,     NULL,       1 << 0,       0,		0,	    0,		-1 },
+	{ "Gimp",	NULL,     NULL,       1 << 5,       1,		0,	    0,		-1 },
+	{ "discord",	NULL,     NULL,       1 << 3,       0,		0,	    0,		-1 },
+	{ NULL,		NULL,     "Steam",    1 << 4,       0,		0,	    0,		-1 },
+	{ "qgis",	NULL,     NULL,       1 << 7,       0,		0,	    0,		-1 },
+	{ NULL,		NULL,     "st",       0,	    0,		1,	    0,		-1 },
+	{ NULL,		NULL,     "Event Tester", 0,        0,		0,	    1,		-1 }, /* xev */
 };
 
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
