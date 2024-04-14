@@ -46,7 +46,6 @@ static const Rule rules[] = {
 	 */
 	/* class	instance  title       tags mask     isfloating	isterminal  noswallow   monitor */
 	{ "zoom",       NULL,     NULL,       1 << 0,       0,		0,	    0,		-1 },
-	{ "Gimp",	NULL,     NULL,       1 << 5,       1,		0,	    0,		-1 },
 	{ "discord",	NULL,     NULL,       1 << 3,       0,		0,	    0,		-1 },
 	{ NULL,		NULL,     "Steam",    1 << 4,       0,		0,	    0,		-1 },
 	{ "qgis",	NULL,     NULL,       1 << 7,       0,		0,	    0,		-1 },
