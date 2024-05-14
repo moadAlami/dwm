@@ -138,6 +138,15 @@ static const Key keys[] = {
 	{ControlMask, XK_space, spawn, SHCMD("dunstctl close")},
 	{ControlMask | ShiftMask, XK_space, spawn, SHCMD("dunstctl close-all")},
 
+	{ Mod1Mask|ControlMask,           XK_j,      moveresize,     {.v = "0x 25y 0w 0h" } },
+	{ Mod1Mask|ControlMask,           XK_k,		moveresize,     {.v = "0x -25y 0w 0h" } },
+	{ Mod1Mask|ControlMask,           XK_l,		moveresize,     {.v = "25x 0y 0w 0h" } },
+	{ Mod1Mask|ControlMask,           XK_h,      moveresize,     {.v = "-25x 0y 0w 0h" } },
+	{ Mod1Mask|ShiftMask,             XK_j,         moveresize,     {.v = "0x 0y 0w 25h" } },
+	{ Mod1Mask|ShiftMask,             XK_k,         moveresize,     {.v = "0x 0y 0w -25h" } },
+	{ Mod1Mask|ShiftMask,             XK_l,         moveresize,     {.v = "0x 0y 25w 0h" } },
+	{ Mod1Mask|ShiftMask,             XK_h,         moveresize,     {.v = "0x 0y -25w 0h" } },
+
 	{0, XF86XK_MonBrightnessUp, spawn, {.v = inc_bright}},
 	{0, XF86XK_MonBrightnessDown, spawn, {.v = dec_bright}},
 
