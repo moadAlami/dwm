@@ -129,8 +129,8 @@ static const Key keys[] = {
 
 
 	/* keyboard layout */
-	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && kill -45 $(pidof dwmblocks)")},
-	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && kill -45 $(pidof dwmblocks)")},
+	{Mod1Mask | ShiftMask, XK_e, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout us && kill -45 $(pidof dwmblocks) && xmodmap /home/mouad/.Xmodmap")},
+	{Mod1Mask | ShiftMask, XK_f, spawn, SHCMD("setxkbmap -option caps:escape && setxkbmap -layout fr && kill -45 $(pidof dwmblocks) && xmodmap /home/mouad/.Xmodmap")},
 
 
 	/* dunst control */
