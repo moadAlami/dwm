@@ -172,6 +172,7 @@ static const Key keys[] = {
 	{MODKEY, XK_n, spawn, SHCMD("clipmenu")},
 
 	{MODKEY, XK_F12, spawn, SHCMD("scrot -e 'mv $f /home/mouad/Pictures/Screenshots/' && notify-send '📸 Screenshot taken'")},
+	{MODKEY|ShiftMask, XK_s, spawn, SHCMD("scrot -s /home/mouad/Pictures/Screengrabs/%Y-%m-%d-%H%M%S.png -e 'xclip -selection clipboard -t image/png -i $f && notify-send \"📸 Screenshot saved and copied\"'")},
 };
 
 /* button definitions */
