@@ -32,6 +32,8 @@ static const char *toggle_vol[] = {"/home/mouad/.local/bin/volume/toggle_vol", N
 
 static const char *wallpaper[] = {"/home/mouad/.local/bin/background", NULL};
 
+static const char *turnoff[] = {"/home/mouad/.local/bin/turnoff", NULL};
+
 /* brightness control */
 static const char *inc_bright[] = { "/home/mouad/.local/bin/brightness/inc_bright", NULL};
 static const char *dec_bright[] = { "/home/mouad/.local/bin/brightness/dec_bright", NULL};
@@ -125,7 +127,7 @@ static const Key keys[] = {
 	TAGKEYS(XK_9                    , 8)
 	/* Custom commands */
 
-	{MODKEY | ShiftMask, XK_o, spawn, SHCMD("[ $(echo -e 'Yes\nNo' | dmenu -i -p 'Are you sure you want to shutdown?') == 'Yes' ] && shutdown now")},
+	{MODKEY | ShiftMask, XK_o, spawn, {.v = turnoff}},
 	{MODKEY | ShiftMask, XK_l, spawn, SHCMD("slock")},
 
 
