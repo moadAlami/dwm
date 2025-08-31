@@ -50,3 +50,29 @@ and (re)compiling the source code.
 Patches
 -------
 systray - zoomswap - scratchpad - sticky - pertag - noborder - movestack - hide vacant tags - bar height - actualfullscreen - alpha monocle layout - bidi - fakefullscreenclient - moveresize - statuscmd
+
+Fixes
+-----
+To fix systray and statuscmd conflicts:
+
+ In the buttonpress function where you have this line:
+
+	else if (ev->x > selmon->ww - statusw) {
+
+and you have to make sure that it takes the width of the systray into account as well, so you end up with:
+
+	else if (ev->x > selmon->ww - statusw - getsystraywidth()) {
+
+Replace 
+
+    drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+
+With 
+
+    drw_text(drw, m->ww - statusw - stw + x, 0, tw, bh, 0, text, 0);
+
+
+Fix for offset of clicks
+
+    else if (ev->x > selmon->ww - statusw - getsystraywidth()) {
+        x = selmon->ww - statusw - getsystraywidth(); //This wasn't there before
