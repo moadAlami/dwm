@@ -47,6 +47,6 @@ Configuration
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
 
-Patches applied
----------------
-zoomswap - scratchpad - sticky - statuscmd - pertag - noborder - movestack - hide vacant tags - actualfullscreen - bar height - alpha monocle layout - alternativetags - bidi - togglefakefullscreen - swallow - moveresize
+Patches
+-------
+systray - zoomswap - scratchpad - sticky - pertag - noborder - movestack - hide vacant tags - bar height - actualfullscreen - alpha monocle layout - bidi - fakefullscreenclient - moveresize - statuscmd
