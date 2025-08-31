@@ -171,6 +171,10 @@ static const Key keys[] = {
 	{Mod1Mask, XK_F2, spawn, SHCMD("mpc toggle")},
 	{Mod1Mask, XK_F3, spawn, SHCMD("mpc next")},
 
+	{MODKEY, XK_F1, spawn, {.v = dec_vol}},
+	{MODKEY, XK_F2, spawn, {.v = inc_vol}},
+	{MODKEY, XK_F3, spawn, {.v = toggle_vol}},
+
 	{0, XK_Pause, spawn, SHCMD("playerctl play-pause")},
 	{0, XF86XK_AudioPlay, spawn, SHCMD("playerctl play-pause")},
 
